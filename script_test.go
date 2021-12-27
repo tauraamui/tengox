@@ -10,7 +10,7 @@ import (
 	"github.com/d5/tengo/v2/require"
 	"github.com/d5/tengo/v2/stdlib"
 
-	"github.com/ozanh/tengox"
+	"github.com/tauraamui/tengox"
 )
 
 const module = `

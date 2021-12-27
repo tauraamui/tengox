@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/ozanh/tengox"
+	"github.com/tauraamui/tengox"
 )
 
 func ExampleCompiled_CallByName() {
