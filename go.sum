@@ -1,2 +1,4 @@
 github.com/d5/tengo/v2 v2.3.0 h1:KD4BKNeN+GvZcA/Y5m5K7LdozraQm4CX4u6D6GNKGw0=
 github.com/d5/tengo/v2 v2.3.0/go.mod h1:XRGjEs5I9jYIKTxly6HCF8oiiilk5E/RYXOZ5b0DZC8=
+github.com/d5/tengo/v2 v2.10.0 h1:gR3VwfJDBlffV8WzfSNNJ7WJtWduwbTKlAu14cA2fRs=
+github.com/d5/tengo/v2 v2.10.0/go.mod h1:XRGjEs5I9jYIKTxly6HCF8oiiilk5E/RYXOZ5b0DZC8=

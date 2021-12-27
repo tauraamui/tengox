@@ -38,7 +38,7 @@ func NewScript(src []byte) *Script {
 // CompileRun compiles the source script to bytecode and run it once to fill
 // global objects.
 func (s *Script) CompileRun() (*Compiled, error) {
-	return s.compile(nil)
+	return s.compile(context.TODO())
 }
 
 // CompileRunContext compiles the source script to bytecode and run it once to
@@ -74,7 +74,7 @@ func (s *Script) compile(ctx context.Context) (*Compiled, error) {
 	// global symbol names to indexes
 	globalIndexes := make(map[string]int, len(globals))
 	for _, name := range symbolTable.Names() {
-		symbol, _, _ := symbolTable.Resolve(name)
+		symbol, _, _ := symbolTable.Resolve(name, false)
 		if symbol.Scope == tengo.ScopeGlobal {
 			globalIndexes[name] = symbol.Index
 		}
@@ -211,7 +211,7 @@ func (c *Compiled) Clone() *Compiled {
 // arguments, and returns result.
 // args must be convertible to supported Tengo types.
 func (c *Compiled) CallByName(fn string, args ...interface{}) (interface{}, error) {
-	return c.CallByNameContext(nil, fn, args...)
+	return c.CallByNameContext(context.TODO(), fn, args...)
 }
 
 // CallByNameContext calls callable tengo.Object by its name and with given
@@ -241,7 +241,7 @@ func (c *Compiled) CallByNameContext(ctx context.Context,
 // args must be convertible to supported Tengo types.
 func (c *Compiled) Call(fn tengo.Object,
 	args ...interface{}) (interface{}, error) {
-	return c.CallContext(nil, fn, args...)
+	return c.CallContext(context.TODO(), fn, args...)
 }
 
 // CallContext calls callable tengo.Object with given arguments, and returns result.

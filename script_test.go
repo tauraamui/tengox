@@ -117,6 +117,7 @@ pass(func(a) {
 	require.NotNil(t, callback)
 	// unset *Compiled throws error
 	result, err := callback.Call(3)
+	require.Nil(t, result)
 	require.Error(t, err)
 
 	// Set *Compiled before Call
@@ -136,6 +137,7 @@ pass(func(a) {
 
 	c := callback.Set(compl)
 	resultx, err := c.CallContext(context.Background(), 5)
+	require.Nil(t, err)
 	require.Equal(t, result, resultx)
 }
 
@@ -173,6 +175,7 @@ func TestContext(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
 	compl, err := tengox.NewScript([]byte("")).CompileRunContext(ctx)
+	require.Nil(t, compl)
 	require.Error(t, err)
 	require.Equal(t, context.Canceled.Error(), err.Error())
 
@@ -202,6 +205,7 @@ func TestImportCall(t *testing.T) {
 	require.Equal(t, false, v)
 
 	v, err = compl.CallByName("containsX", "foo bar", "bar")
+	require.Nil(t, v)
 	require.True(t, strings.Contains(err.Error(), "not found"))
 }
 
